@@ -1,3 +1,54 @@
 spring:
   application:
     name: notification
+
+server:
+  port: 8080
+
+notification:
+  datasource:
+    contact:
+      url: jdbc:h2:file:./data/contact-db;AUTO_SERVER=TRUE
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+    device:
+      url: jdbc:h2:file:./data/device-db;AUTO_SERVER=TRUE
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+    engine:
+      url: jdbc:h2:file:./data/engine-db;AUTO_SERVER=TRUE
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+
+  mail:
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:25}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    from: ${SMTP_FROM:no-reply@example.com}
+    properties:
+      mail.smtp.auth: "true"
+      mail.smtp.starttls.enable: "true"
+
+  queue:
+    poll-interval-ms: 5000
+    batch-size: 20
+    default-max-attempts: 5
+
+  retry:
+    base-delay-ms: 30000
+    multiplier: 2.0
+    max-delay-ms: 3600000
+
+  push:
+    fcm:
+      enabled: false
+    apns:
+      enabled: false
+
+logging:
+  level:
+    com.deepakraj.notification: INFO

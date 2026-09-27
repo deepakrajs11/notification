@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: notification-test
+
+notification:
+  datasource:
+    contact:
+      url: jdbc:h2:mem:contactdb-test;DB_CLOSE_DELAY=-1
+      username: sa
+      password:
+    device:
+      url: jdbc:h2:mem:devicedb-test;DB_CLOSE_DELAY=-1
+      username: sa
+      password:
+    engine:
+      url: jdbc:h2:mem:enginedb-test;DB_CLOSE_DELAY=-1
+      username: sa
+      password:
+  queue:
+    poll-interval-ms: 3600000
